@@ -17,3 +17,6 @@ class ProjectTestCase(TestCase):
     
     def test_project1_should_have_user1_as_member(self):
         self.assertTrue(len(self.project1.members.all()) == 1)
+    
+    def test_project1_unix_name_should_be_valid(self):
+        self.assertTrue(self.project1.project_unix_name == "project_1")
