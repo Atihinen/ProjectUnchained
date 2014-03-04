@@ -1,0 +1,48 @@
+.messages {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+.errorlist {
+	color: #ff0000;
+	margin: 0;
+}
+
+.field-warning {
+	background-color: #fcf8e3;
+}
+
+.field-error {
+	background-color: #f2dede;
+}
+
+.field-success {
+	background-color: #dff0d8;
+}
+
+.optional_fields {
+	cursor: pointer;
+}
+
+.field-helper {
+	cursor: help;
+	float: right;
+	display: inline;
+	margin-top: 9px;
+}
+
+
+
+#login_form .glyphicon {
+	width: 1em;
+}
+
+#login_partial_container {
+	float: right;
+}
+
+nav ul li:last-child {
+	float: right;
+}
+
