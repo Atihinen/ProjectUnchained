@@ -31,7 +31,7 @@ $(document).ready(function(){
 		});
 		if($('#id_name').val() != ""){
 			console.log("True"+ $("#id_name").val());
-			var req_fields = ['id_name', 'id__www'];
+			var req_fields = ['id_name', 'id_www'];
 			$.each(req_fields, function(i){
 				var f_id = "#"+req_fields[i];
 				console.log(f_id+": "+$(f_id).val());

@@ -1,9 +1,11 @@
 var enable_login = $("#login_partial_enable");
 var login_partial = $("#login_partial_form");
+var register_btn = $("#login_partial_register");
 var login_enable_iID;
 $(document).ready(function() {
 	enable_login = $("#login_partial_enable");
 	login_partial = $("#login_partial_form");
+	register_btn = $("#login_partial_register");
 	$(".alert").alert();
 	
 	enable_login.on("click", function(){
@@ -29,6 +31,7 @@ function dialog(splitText, title, content){
 }
 
 function show_login_form(){
+	register_btn.fadeOut();
 	enable_login.fadeOut(function(){
 		login_partial.removeClass("hidden").fadeIn();
 	});
@@ -38,6 +41,7 @@ function hide_login_form(){
 	login_partial.fadeOut(function(){
 		login_partial.addClass("hidden");
 		enable_login.fadeIn();
+		register_btn.fadeIn();
 	});
 	clearInterval(login_enable_iID);
 }
