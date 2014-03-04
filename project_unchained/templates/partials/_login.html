@@ -1,5 +1,6 @@
 <div id="login_partial_container">
 	<button class="btn btn-primary" id="login_partial_enable">Login</button>
+	<a href="/account/register" id="login_partial_register">Register</a>
 	<form role="form" action="/accounts/login/" method="post" enctype="multipart/form-data" class="form-inline hidden" id="login_partial_form">
 		<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 		<div class="form-group">
