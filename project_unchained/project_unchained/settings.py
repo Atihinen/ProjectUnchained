@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.contrib import messages
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 PROJECT_DIR = os.path.dirname(__file__)
@@ -35,6 +36,12 @@ ACCOUNT_ACTIVATION_DAYS = 7
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
+MESSAGE_TAGS = {
+   messages.ERROR: 'alert alert-danger fade in',
+   messages.SUCCESS: 'alert alert-success fade in',
+   messages.INFO: 'alert alert-info fade in',
+}
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -46,7 +53,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'company',
     'register',
-    #'gui',
+    'project',
+    'gui',
 )
 
 MIDDLEWARE_CLASSES = (
