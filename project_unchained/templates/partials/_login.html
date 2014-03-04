@@ -1,0 +1,16 @@
+<div id="login_partial_container">
+	<button class="btn btn-primary" id="login_partial_enable">Login</button>
+	<form role="form" action="/accounts/login/" method="post" enctype="multipart/form-data" class="form-inline hidden" id="login_partial_form">
+		<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+		<div class="form-group">
+			<span class="glyphicon glyphicon-user">&nbsp;</span>
+			<input class="input-sm" type="text" class="form-control" name="username" id="user" placeholder="Username">
+			<span class="glyphicon glyphicon-lock">&nbsp;</span>
+			<input class="input-sm" type="password" class="form-control" name="password" id="pword" placeholder="Password">
+		</div>
+		<input type="hidden" name="next" value="{{ next }}" />
+		<button type="submit" class="btn btn-primary btn-xs">
+			<span class="glyphicon glyphicon-chevron-right" style="width: 13px">&nbsp;</span>
+		</button>
+	</form>
+</div>
