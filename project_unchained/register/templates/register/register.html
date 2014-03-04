@@ -1,31 +1,38 @@
 {% extends "master.html" %}
+{% load static %}
 {% block child %}
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			{% if form.errors %}
-				<div class="alert alert-error">
-					Your username and password didn't match. Please try again.
-				</div>		
-			{% endif %}
 			<h1>Register</h1>
-			<form action="{% url 'register:register' %}" method="post" role="form">
-				<input type="hidden" name="csrfmiddlewaretoken" value="{{ csfr_token }}" />
+			<form class="form-horizontal" id="process_registration" action="{% url 'register:index' %}" method="post" role="form" enctype="multipart/form-data">
+				<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 				<fieldset>
-					<div class="form-group">
-						<label>Username:</label>
-						<input class="form-control" type="text" name="username" placeholder="Username" />
+					<legend>Required: User info</legend>
+					<div>
+					{% for field in form %}
+						<div class="form-group">
+							{{ field.label_tag }}
+							{{ field }}
+							{{ field.errors }}
+						</div>
+					{% endfor %}
 					</div>
-					<div class="form-group">
-						<label>Email:</label>
-						<input class="form-control" type="text" name="email" placeholder="Email" />
+				<fieldset>
+					<legend class="optional_fields">Optional: Company info</legend>
+					<div class="hidden">
+					{% for field in cform %}
+						<div class="form-group">
+							{{ field.label_tag }}
+							{{ field }}
+							{{ field.errors }}
+						</div>
+					{% endfor %}
 					</div>
-					<div class="form-group">
-						<label>Password:</label>
-						<input class="form-control" type="password" name="password" placeholder="Password" />
-					</div>
-					<button type="submit" class="btn btn-primary">Submit</button>
 				</fieldset>
+				</fieldset>
+				<input type="submit" class="btn btn-primary" value="Submit" />
 			</form>
 		</div>
 	</div>
+	<script type="text/javascript" src="{% static 'js/register.js' %}"></script>
 {% endblock child %}
