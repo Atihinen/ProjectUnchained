@@ -5,17 +5,54 @@
 		<head>
 			<title>Project unchained</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-			<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap-theme.min.css' %}">
+			<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" />
+			<link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap-theme.min.css' %}" />
+			<link rel="stylesheet" href="{% static 'vendor/jquery-ui/css/redmond/jquery-ui-1.10.4.custom.min.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/default.css' %}" />
+			<script type="text/javascript" src="{% static 'vendor/jquery/jquery-1.11.0.min.js' %}"></script>
+			<script type="text/javascript" src="{% static 'vendor/jquery-ui/js/jquery-ui-1.10.4.custom.min.js' %}"></script>
+			<script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
+			<script type="text/javascript" src="{% static 'js/site.js' %}"></script>
 		</head>
 		<body>
 			<header class="container-fluid">
 				<div class="row">
 					<div class="col-md-12"></div>
-					<nav class="col-md-12"></nav>
 				</div>
+				<div class="row">
+					<nav class="col-md-12">
+						{% if user.username %}
+							<ul class="nav nav-pills">
+								<li class="active"><a href="/">Home</a></li>
+								<li><a href="/accounts/logout">Logout</a></li>
+							</ul>
+						{% else %}
+							<ul class="nav nav-pills">
+								<li class="active">
+									<a href="/">Home</a></li>
+								<li>
+									{% include "partials/_login.html" %}			
+								</li>
+							</ul>	
+							
+						{% endif %}
+					</nav>
+				</div>
+				
 			</header>
 			<div class="container-fluid">
+				<div class="row">
+					{% if messages %}
+					<div class="col-md-10 col-md-offset-1">
+						<ul class="messages">
+						    {% for message in messages %}
+						    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}
+						    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></li>
+						    {% endfor %}
+						</ul>
+					</div>
+					{% endif %}
+				</div>
 				{% block child %}
 				{% endblock child %}
 			</div>

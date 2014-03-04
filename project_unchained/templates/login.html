@@ -1,23 +1,40 @@
 {% extends "master.html" %}
 {% block child %}
 	{% if form.errors %}
-		<div class="alert alert-danger">
+		<div class="alert alert-danger fade in">
 			Your username and password didn't match. Please try again.
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		</div>		
 	{% endif %}
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4 class="panel-title">Login</h4>
-		</div>
-		<div class="panel-body">
-			<form class="form-inline" role="form" action="." method="post" enctype="multipart/form-data">
-				<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-				<div class="form-group">
-					<label class="sr-only" for="text">Username</label>
-					<input class="input-sm" type="text" class="form-control" name="username" id="user" placeholder="Username">
-					<label class="sr-only" for="text">Password</label>
-					<input class="input-sm" type="password" class="form-control" name="password" id="pword" placeholder="Password">
-				</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="page-header">
+				<h1>Register</h1>
+			</div>
+			<form role="form" action="." method="post" enctype="multipart/form-data" id="login_form">
+				<fieldset>
+					<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+					<div class="form-group">
+						<label for="text">Username</label>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<spanc class="glyphicon glyphicon-user">&nbsp;</span>
+							</span>
+							<input class="input-sm form-control" type="text" class="form-control" name="username" id="user" placeholder="Username">
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<label for="text">Password</label>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<spanc class="glyphicon glyphicon-lock">&nbsp;</span>
+							</span>
+							<input class="input-sm form-control" type="password" class="form-control" name="password" id="pword" placeholder="Password">
+							
+						</div>
+					</div>
+				</fieldset>
 				<input type="hidden" name="next" value="{{ next }}" />
 				<button type="submit" class="btn btn-default btn-xs">
 					Login
